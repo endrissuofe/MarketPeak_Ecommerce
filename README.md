@@ -38,7 +38,7 @@ cd MarketPeak_Ecommerce
 git init
 ```
 
-![Git initialization](images/step1.png)
+![Git initialization](img/step1.png)
 
 ### 1.2 Obtain and Prepare Website Template
 
@@ -48,7 +48,7 @@ Instead of building from scratch, I used a pre-existing e-commerce template:
 2. Extracted the template into the project directory
 3. Customized the template by updating the branding to "MarketPeak"
 
-![Downloaded template](images/toolplate.png)
+![Downloaded template](img/toolplate.png)
 
 ### 1.3 Stage and Commit Template to Git
 
@@ -59,7 +59,7 @@ git add .
 git commit -m "Initial commit: Add MarketPeak e-commerce template"
 ```
 
-![Git commit](images/step%201.2.png)
+![Git commit](img/step1.png
 
 ### 1.4 Push Code to GitHub Repository
 
@@ -75,8 +75,8 @@ git branch -M main
 git push -u origin main
 ```
 
-![GitHub repository creation](images/github_repo.png)
-![Successful push to GitHub](images/step1.3.png)
+![GitHub repository creation](img/github_repo.png)
+![Successful push to GitHub](img/step1.3.png)
 
 ## 2. AWS Deployment
 
@@ -89,9 +89,9 @@ I set up an EC2 instance to host the MarketPeak e-commerce platform:
 3. Configured security groups to allow HTTP (port 80) and SSH (port 22) traffic
 4. Created and downloaded a key pair for SSH access
 
-![EC2 instance creation](images/EC2-Instance.png)
-![EC2 security group configuration](images/secu.png)
-![Running EC2 instance](images/Lunch_an_instance3.png)
+![EC2 instance creation](img/EC2-Instance.png)
+![EC2 security group configuration](img/secu.png)
+![Running EC2 instance](img/Lunch_an_instance3.png)
 
 ### 2.2 Clone Repository on Linux Server
 
@@ -105,8 +105,8 @@ ssh -i "xxxx.pem" xxxx@ec2-12-345-67-89
 git clone https://github.com/myusername/MarketPeak_Ecommerce.git
 ```
 
-![SSH connection to EC2](images/step2.1.png)
-![Cloning repository](images/Step2.2.png)
+![SSH connection to EC2](img/step2.1.png)
+![Cloning repository](img/Step2.2.png)
 
 ### 2.3 Install Web Server on EC2
 
@@ -129,7 +129,7 @@ sudo systemctl enable httpd
 sudo systemctl status httpd
 ```
 
-![Apache installation](images/step2.3.1.png)
+![Apache installation](img/step2.3.1.png)
 
 ### 2.4 Configure httpd for Website
 
@@ -144,7 +144,7 @@ sudo chown -R apache:apache /var/www/html/
 sudo chmod -R 755 /var/www/html/
 ```
 
-![Copying website files](images/step2.4.1.png)
+![Copying website files](img/step2.4.1.png)
 
 ### 2.5 Access Website from Browser
 
@@ -154,7 +154,7 @@ After deployment, I accessed the website using the EC2 instance's public IP addr
 http://12.345.67.89
 ```
 
-![Live website](images/step2.5.png)
+![Live website](img/step2.5.png)
 
 ## 3. Continuous Integration and Deployment Workflow
 
