@@ -1,26 +1,31 @@
 # MarketPeak E-Commerce Platform Deployment
 
 ## Table of Contents
-- [Project Overview](#project-overview)
-- [1. Version Control with Git](#1-version-control-with-git)
-  - [1.1 Initialize Git Repository](#11-initialize-git-repository)
-  - [1.2 Obtain and Prepare Website Template](#12-obtain-and-prepare-website-template)
-  - [1.3 Stage and Commit Template to Git](#13-stage-and-commit-template-to-git)
-  - [1.4 Push Code to GitHub Repository](#14-push-code-to-github-repository)
-- [2. AWS Deployment](#2-aws-deployment)
-  - [2.1 Set Up AWS EC2 Instance](#21-set-up-aws-ec2-instance)
-  - [2.2 Clone Repository on Linux Server](#22-clone-repository-on-linux-server)
-  - [2.3 Install Web Server on EC2](#23-install-web-server-on-ec2)
-  - [2.4 Configure httpd for Website](#24-configure-httpd-for-website)
-  - [2.5 Access Website from Browser](#25-access-website-from-browser)
-- [3. Continuous Integration and Deployment Workflow](#3-continuous-integration-and-deployment-workflow)
-  - [3.1 Developing New Features](#31-developing-new-features)
-  - [3.2 Version Control with Git](#32-version-control-with-git)
-  - [3.3 Pull Requests and Merging](#33-pull-requests-and-merging)
-  - [3.4 Deploying Updates to Production](#34-deploying-updates-to-production)
-  - [3.5 Testing New Changes](#35-testing-new-changes)
-- [4. Challenges and Solutions](#4-challenges-and-solutions)
-- [5. Conclusion](#5-conclusion)
+- [MarketPeak E-Commerce Platform Deployment](#marketpeak-e-commerce-platform-deployment)
+  - [Table of Contents](#table-of-contents)
+  - [Project Overview](#project-overview)
+  - [1. Version Control with Git](#1-version-control-with-git)
+    - [1.1 Initialize Git Repository](#11-initialize-git-repository)
+    - [1.2 Obtain and Prepare Website Template](#12-obtain-and-prepare-website-template)
+    - [1.3 Stage and Commit Template to Git](#13-stage-and-commit-template-to-git)
+    - [1.4 Push Code to GitHub Repository](#14-push-code-to-github-repository)
+  - [2. AWS Deployment](#2-aws-deployment)
+    - [2.1 Set Up AWS EC2 Instance](#21-set-up-aws-ec2-instance)
+    - [2.2 Clone Repository on Linux Server](#22-clone-repository-on-linux-server)
+    - [2.3 Install Web Server on EC2](#23-install-web-server-on-ec2)
+    - [2.4 Configure httpd for Website](#24-configure-httpd-for-website)
+    - [2.5 Access Website from Browser](#25-access-website-from-browser)
+  - [3. Continuous Integration and Deployment Workflow](#3-continuous-integration-and-deployment-workflow)
+    - [3.1 Developing New Features](#31-developing-new-features)
+    - [3.2 Version Control with Git](#32-version-control-with-git)
+    - [3.3 Pull Requests and Merging](#33-pull-requests-and-merging)
+    - [3.4 Deploying Updates to Production](#34-deploying-updates-to-production)
+    - [3.5 Testing New Changes](#35-testing-new-changes)
+  - [4. Challenges and Solutions](#4-challenges-and-solutions)
+    - [Challenge 1: Permission Issues with Apache](#challenge-1-permission-issues-with-apache)
+    - [Challenge 2: Security Group Configuration](#challenge-2-security-group-configuration)
+    - [Challenge 3: Git Authentication on EC2](#challenge-3-git-authentication-on-ec2)
+  - [5. Conclusion](#5-conclusion)
 
 ## Project Overview
 
@@ -174,15 +179,15 @@ git checkout -b feature/marketplace-customization
 The main customizations included:
 
 1. Updated color scheme:
-   \`\`\`css
+   ```css
    :root {
      --primary-color: #4285f4;  /* Blue */
      --secondary-color: #34a853;  /* Green */
    }
-   \`\`\`
+   ```
 
 2. Improved navigation bar for e-commerce:
-   \`\`\`html
+   ```html
    <nav class="navbar navbar-expand-lg bg-light shadow-lg">
        <div class="container">
            <a class="navbar-brand" href="index.html">
@@ -191,10 +196,10 @@ The main customizations included:
            <!-- Navigation items -->
        </div>
    </nav>
-   \`\`\`
+   ```
 
 3. Added featured products section:
-   \`\`\`html
+   ```html
    <section class="featured-products section-padding">
        <div class="container">
            <div class="row">
@@ -205,30 +210,30 @@ The main customizations included:
            <!-- Product cards -->
        </div>
    </section>
-   \`\`\`
+   ```
 
 4. Enhanced the footer with e-commerce specific elements:
-   \`\`\`html
+   ```html
    <footer class="site-footer">
        <div class="container">
            <!-- Quick links, customer support, contact info, newsletter -->
        </div>
    </footer>
-   \`\`\`
+   ```
 
-![Development changes](images/development-changes.png)
+![Development changes](img/changes.png)
 
 ### 3.2 Version Control with Git
 
 After implementing changes, I committed them to the feature branch:
 
-\`\`\`bash
+```bash
 git add .
 git commit -m "Customize template for MarketPeak e-commerce platform"
 git push origin feature/marketplace-customization
-\`\`\`
+```
 
-![Committing changes](images/commit-changes.png)
+![Committing changes](img/changes.png)
 
 ### 3.3 Pull Requests and Merging
 
@@ -238,14 +243,14 @@ To integrate changes into the main branch:
 2. Reviewed the changes to ensure they met requirements
 3. Merged the pull request
 
-![Creating a pull request](images/pull-request.png)
-![Merged pull request](images/merged-pr.png)
+![Creating a pull request](img/push.png)
+![Merged pull request](img/pull_11.png)
 
 ### 3.4 Deploying Updates to Production
 
 To deploy new changes to the live server:
 
-\`\`\`bash
+```bash
 # SSH into EC2 instance
 ssh -i "marketpeak-key.pem" ec2-user@ec2-12-345-67-89.compute-1.amazonaws.com
 
@@ -257,16 +262,14 @@ sudo git pull origin main
 
 # Restart Apache if necessary
 sudo systemctl restart httpd
-\`\`\`
+```
 
-![Pulling updates on server](images/server-pull.png)
-![Restarting Apache](images/apache-restart.png)
 
 ### 3.5 Testing New Changes
 
 After deployment, I verified the changes on the live site by accessing the public IP and testing the new functionality.
 
-![Updated live website](images/updated-website.png)
+![Updated live website](img/step2.5.png)
 
 ## 4. Challenges and Solutions
 
@@ -277,10 +280,10 @@ During this project, I encountered several challenges and implemented solutions:
 **Problem:** Apache couldn't access some files in the document root directory.
 
 **Solution:** Set appropriate ownership and permissions for the web files:
-\`\`\`bash
+```bash
 sudo chown -R apache:apache /var/www/html/
 sudo chmod -R 755 /var/www/html/
-\`\`\`
+```
 
 ### Challenge 2: Security Group Configuration
 
@@ -288,7 +291,6 @@ sudo chmod -R 755 /var/www/html/
 
 **Solution:** Verified and updated EC2 security group to properly allow inbound traffic on port 80 (HTTP).
 
-![Security group update](images/security-fix.png)
 
 ### Challenge 3: Git Authentication on EC2
 
@@ -296,7 +298,6 @@ sudo chmod -R 755 /var/www/html/
 
 **Solution:** Set up HTTPS authentication with a personal access token for GitHub on the EC2 instance.
 
-![GitHub token setup](images/github-token.png)
 
 ## 5. Conclusion
 
